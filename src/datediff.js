@@ -15,6 +15,8 @@
             now = new Date(),
             toDate = toDate && toDate instanceof Date ? toDate : now,
             diff = toDate - fromDate,
+            // The number of milliseconds in one week
+            oneWeek = 1000 * 60 * 60 * 24 * 7,
             date = new Date(startDate + diff),
             years = date.getFullYear() - 1970,
             months = date.getMonth(),
@@ -22,13 +24,15 @@
             hours = date.getHours(),
             minutes = date.getMinutes(),
             seconds = date.getSeconds(),
+            weeks = Math.floor(date.getTime() / oneWeek),
             diffDate = {
                 years: 0,
                 months: 0,
                 days: 0,
                 hours: 0,
                 minutes: 0,
-                seconds: 0
+                seconds: 0,
+                weeks: 0
             };
 
         if (years < 0) return diffDate;
@@ -38,6 +42,7 @@
         diffDate.hours = hours > 0 ? hours : 0;
         diffDate.minutes = minutes > 0 ? minutes : 0;
         diffDate.seconds = seconds > 0 ? seconds : 0;
+        diffDate.weeks = weeks > 0 ? weeks : 0;
         return diffDate;
     }
 })(this);

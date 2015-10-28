@@ -94,4 +94,28 @@ describe('Difference date', function() {
     expect(diff.minutes).toBe(12);
     expect(diff.seconds).toBe(2);
   });
+  it('Should return correct weeks', function() {
+    to = new Date(2015, 10, 9, 13, 12, 1);
+    from = new Date(2015, 10, 1, 10, 59, 59);
+    diff = datediff(from, to);
+    expect(diff.years).toBe(0);
+    expect(diff.months).toBe(0);
+    expect(diff.days).toBe(8);
+    expect(diff.hours).toBe(2);
+    expect(diff.minutes).toBe(12);
+    expect(diff.seconds).toBe(2);
+    expect(diff.weeks).toBe(1);
+  });
+  it('Should return 9 weeks from now', function() {
+    to = new Date(2015, 12, 8, 13, 12, 1);
+    from = new Date(2015, 10, 1, 10, 59, 59);
+    diff = datediff(from, to);
+    expect(diff.years).toBe(0);
+    expect(diff.months).toBe(2);
+    expect(diff.days).toBe(9);
+    expect(diff.hours).toBe(1);
+    expect(diff.minutes).toBe(12);
+    expect(diff.seconds).toBe(2);
+    expect(diff.weeks).toBe(9);
+  });
 });
